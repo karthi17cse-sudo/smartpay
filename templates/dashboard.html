@@ -1,0 +1,135 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <!-- WELCOME CARD -->
+
+    <div class="welcome-card">
+
+        <h1>
+            Welcome,
+            {{ username }}
+        </h1>
+
+        <p>
+            Manage your digital payments securely
+        </p>
+
+    </div>
+
+    <!-- BALANCE CARD -->
+
+  <div class="balance-card">
+
+    <h2>
+        Wallet Balance
+    </h2>
+
+    <div class="balance-row">
+
+        <h1 id="balanceAmount">
+            ₹ ****
+        </h1>
+
+        <button
+            class="toggle-btn"
+            onclick="toggleBalance('{{ balance }}')">
+
+            👁
+
+        </button>
+
+    </div>
+
+</div>
+
+    <!-- QUICK ACTIONS -->
+
+    <div class="actions-container">
+
+        <a href="/send_money"
+           class="action-btn">
+
+            Send Money
+
+        </a>
+
+        <a href="/history"
+           class="action-btn">
+
+            Transaction History
+
+        </a>
+
+    </div>
+
+    <!-- RECENT TRANSACTIONS -->
+
+    <!--<div class="transaction-box">
+
+        <h2>
+            Recent Transactions
+        </h2>
+
+        <table>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Amount</th>
+                <th>Status</th>
+
+            </tr>
+
+            {% for t in transactions %}
+
+            <tr>
+
+               <td>
+    {{ loop.index }}
+</td>
+
+                <td>
+                    {{ t.sender }}
+                </td>
+
+                <td>
+                    {{ t.receiver }}
+                </td>
+
+                <td>
+                    ₹ {{ t.amount }}
+                </td>
+
+                <td>
+                    {{ t.status }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %} -->
+<div class="recent-transaction-btn">
+
+    <a href="/history">
+
+        <button class="view-history-btn">
+
+            View Recent Transactions
+
+        </button>
+
+    </a>
+
+</div>

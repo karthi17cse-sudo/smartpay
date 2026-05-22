@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="auth-container">
+
+    <div class="auth-box">
+
+        <h1>
+            Create Account
+        </h1>
+
+        <form method="POST">
+
+            <input type="text"
+                   name="username"
+                   placeholder="Enter Username"
+                   required>
+
+            <input type="text"
+                   name="mobile_number"
+                   placeholder="Mobile Number"
+                   maxlength="10"
+                   required>
+
+            <input type="text"
+                   name="upi_id"
+                   placeholder="Enter UPI ID"
+                   required>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter Password"
+                   required>
+
+            <button type="submit">
+                Register
+            </button>
+
+        </form>
+
+        <p>
+
+            Already have an account?
+
+            <a href="/login">
+                Login
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

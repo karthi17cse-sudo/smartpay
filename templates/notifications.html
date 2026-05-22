@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <div class="transaction-box">
+
+        <h2>
+            Notifications
+        </h2>
+
+        <table>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Message</th>
+                <th>Date</th>
+
+            </tr>
+
+            {% for n in notifications %}
+
+            <tr>
+
+                <td>
+                    {{ n.notification_id }}
+                </td>
+
+                <td>
+                    {{ n.message }}
+                </td>
+
+                <td>
+                    {{ n.created_at }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

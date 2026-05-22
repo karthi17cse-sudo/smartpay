@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h2>All Users</h2>
+
+<table>
+
+<tr>
+
+    <th>ID</th>
+    <th>Username</th>
+    <th>UPI</th>
+    <th>Status</th>
+    <th>Action</th>
+
+</tr>
+
+{% for user in users %}
+
+<tr>
+
+    <td>{{ user.user_id }}</td>
+
+    <td>{{ user.username }}</td>
+
+    <td>{{ user.upi_id }}</td>
+
+    <td>{{ user.status }}</td>
+
+    <td>
+
+        <a href="/freeze_user/{{ user.user_id }}">
+            Freeze
+        </a>
+
+        |
+
+        <a href="/unfreeze_user/{{ user.user_id }}">
+            Unfreeze
+        </a>
+
+        |
+
+        <a href="/delete_user/{{ user.user_id }}">
+            Delete
+        </a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br><br>
+
+<h2>All Transactions</h2>
+
+<table>
+
+<tr>
+
+    <th>ID</th>
+    <th>Sender</th>
+    <th>Receiver</th>
+    <th>Amount</th>
+    <th>Status</th>
+
+</tr>
+
+{% for t in transactions %}
+
+<tr>
+
+    <td>{{ t.transaction_id }}</td>
+
+    <td>{{ t.sender }}</td>
+
+    <td>{{ t.receiver }}</td>
+
+    <td>₹ {{ t.amount }}</td>
+
+    <td>{{ t.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

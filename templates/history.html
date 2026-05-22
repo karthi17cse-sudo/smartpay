@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <div class="transaction-box">
+
+        <h2>
+            Transaction History
+        </h2>
+
+        <table>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+
+            </tr>
+
+            {% for t in transactions %}
+
+            <tr>
+
+                <td>
+    {{ loop.index }}
+</td>
+
+                <td>
+                    {{ t.sender }}
+                </td>
+
+                <td>
+                    {{ t.receiver }}
+                </td>
+
+                <td>
+                    ₹ {{ t.amount }}
+                </td>
+
+                <td>
+                    {{ t.transaction_date }}
+                </td>
+
+                <td>
+                    {{ t.status }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

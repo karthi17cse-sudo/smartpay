@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="auth-container">
+
+    <div class="auth-box">
+
+        <h1>
+            Login
+        </h1>
+
+        <form method="POST">
+
+            <input type="text"
+                   name="upi_id"
+                   placeholder="Enter UPI ID"
+                   required>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter Password"
+                   required>
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <p>
+
+            Don't have an account?
+
+            <a href="/register">
+                Register
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
