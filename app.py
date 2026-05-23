@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, session, flash
 import mysql.connector
+import os
 
 app = Flask(__name__)
-app.secret_key = "smartpay_secret"
+app.secret_key = os.environ.get("SECRET_KEY")
 app.config['SESSION_PERMANENT'] = False
 
 # ======================================
@@ -25,10 +26,16 @@ def disable_cache(response):
 # ======================================
 
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="1234567890",
-    database="smartpay"
+
+    host=os.environ.get("MYSQLHOST"),
+
+    user=os.environ.get("MYSQLUSER"),
+
+    password=os.environ.get("MYSQLPASSWORD"),
+
+    database=os.environ.get("MYSQLDATABASE"),
+
+    port=os.environ.get("MYSQLPORT")
 )
 
 cursor = db.cursor(dictionary=True)
