@@ -25,21 +25,29 @@ def disable_cache(response):
 # DATABASE CONNECTION
 # ======================================
 
-db = mysql.connector.connect(
+try:
 
-    host=os.environ.get("MYSQLHOST"),
+    db = mysql.connector.connect(
 
-    user=os.environ.get("MYSQLUSER"),
+        host=os.environ.get("MYSQLHOST"),
 
-    password=os.environ.get("MYSQLPASSWORD"),
+        user=os.environ.get("MYSQLUSER"),
 
-    database=os.environ.get("MYSQLDATABASE"),
+        password=os.environ.get("MYSQLPASSWORD"),
 
-    port=int(os.environ.get("MYSQLPORT"))
-)
+        database=os.environ.get("MYSQLDATABASE"),
 
-cursor = db.cursor(dictionary=True)
+        port=int(os.environ.get("MYSQLPORT"))
 
+    )
+
+    cursor = db.cursor(dictionary=True)
+
+    print("Database Connected Successfully")
+
+except Exception as e:
+
+    print("Database Connection Error:", e)
 # ======================================
 # HOME PAGE
 # ======================================
@@ -904,10 +912,4 @@ def delete_user(user_id):
 # ======================================
 
 if __name__ == '__main__':
-
-    port = int(os.environ.get("PORT", 5000))
-
-    app.run(
-        host='0.0.0.0',
-        port=port
-    )
+    app.run(debug=True)
