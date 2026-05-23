@@ -83,7 +83,7 @@ def register():
         cursor.execute(
             """
             SELECT *
-            FROM Users
+            FROM users
             WHERE upi_id=%s
             """,
             (upi_id,)
@@ -101,7 +101,7 @@ def register():
 
         cursor.execute(
             """
-            INSERT INTO Users(
+            INSERT INTO users(
 
                 username,
                 mobile_number,
@@ -131,7 +131,7 @@ def register():
 
         cursor.execute(
             """
-            INSERT INTO Wallets(
+            INSERT INTO wallets(
                 user_id,
                 balance
             )
@@ -192,7 +192,7 @@ def login():
         cursor.execute(
             """
             SELECT *
-            FROM Users
+            FROM users
 
             WHERE upi_id=%s
             AND password=%s
@@ -287,10 +287,10 @@ def dashboard():
 
         FROM Transactions t
 
-        JOIN Users u1
+        JOIN users u1
         ON t.sender_id = u1.user_id
 
-        JOIN Users u2
+        JOIN users u2
         ON t.receiver_id = u2.user_id
 
         WHERE
@@ -336,7 +336,7 @@ def add_money():
 
         cursor.execute(
             """
-            INSERT INTO Transactions(
+            INSERT INTO transactions(
 
                 sender_id,
                 receiver_id,
@@ -362,7 +362,7 @@ def add_money():
 
         cursor.execute(
             """
-            UPDATE Wallets
+            UPDATE wallets
 
             SET balance = balance + %s
 
@@ -423,7 +423,7 @@ def send_money():
         cursor.execute(
             """
             SELECT *
-            FROM Users
+            FROM users
             WHERE upi_id=%s
             """,
 
@@ -490,7 +490,7 @@ def send_money():
 
         cursor.execute(
             """
-            UPDATE Wallets
+            UPDATE wallets
 
             SET balance = balance - %s
 
@@ -507,7 +507,7 @@ def send_money():
 
         cursor.execute(
             """
-            UPDATE Wallets
+            UPDATE wallets
 
             SET balance = balance + %s
 
@@ -628,7 +628,7 @@ def history():
 
             t.status
 
-        FROM Transactions t
+        FROM transactions t
 
         JOIN Users u1
         ON t.sender_id = u1.user_id
@@ -690,7 +690,7 @@ def admin_login():
         cursor.execute(
             """
             SELECT *
-            FROM Admins
+            FROM admins
 
             WHERE username=%s
             AND password=%s
@@ -735,7 +735,7 @@ def admin_dashboard():
     cursor.execute(
         """
         SELECT *
-        FROM Users
+        FROM users
 
         ORDER BY user_id DESC
         """
@@ -761,7 +761,7 @@ def admin_dashboard():
 
             t.status
 
-        FROM Transactions t
+        FROM transactions t
 
         JOIN Users u1
         ON t.sender_id=u1.user_id
@@ -792,7 +792,7 @@ def freeze_user(user_id):
 
     cursor.execute(
         """
-        UPDATE Users
+        UPDATE users
 
         SET status='Frozen'
 
@@ -820,7 +820,7 @@ def unfreeze_user(user_id):
 
     cursor.execute(
         """
-        UPDATE Users
+        UPDATE users
 
         SET status='Active'
 
@@ -854,7 +854,7 @@ def delete_user(user_id):
 
     cursor.execute(
         """
-        DELETE FROM Transactions
+        DELETE FROM transactions
 
         WHERE sender_id=%s
         OR receiver_id=%s
@@ -882,7 +882,7 @@ def delete_user(user_id):
 
     cursor.execute(
         """
-        DELETE FROM Wallets
+        DELETE FROM wallets
 
         WHERE user_id=%s
         """,
@@ -894,7 +894,7 @@ def delete_user(user_id):
 
     cursor.execute(
         """
-        DELETE FROM Users
+        DELETE FROM users
 
         WHERE user_id=%s
         """,
