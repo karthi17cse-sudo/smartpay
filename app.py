@@ -35,7 +35,7 @@ db = mysql.connector.connect(
 
     database=os.environ.get("MYSQLDATABASE"),
 
-    port=os.environ.get("MYSQLPORT")
+    port=int(os.environ.get("MYSQLPORT"))
 )
 
 cursor = db.cursor(dictionary=True)
@@ -904,4 +904,10 @@ def delete_user(user_id):
 # ======================================
 
 if __name__ == '__main__':
-    app.run(debug=True)
+
+    port = int(os.environ.get("PORT", 5000))
+
+    app.run(
+        host='0.0.0.0',
+        port=port
+    )
