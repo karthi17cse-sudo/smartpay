@@ -285,7 +285,7 @@ def dashboard():
 
             t.status
 
-        FROM Transactions t
+        FROM transactions t
 
         JOIN users u1
         ON t.sender_id = u1.user_id
@@ -464,7 +464,7 @@ def send_money():
 
         cursor.execute(
             """
-            INSERT INTO Transactions(
+            INSERT INTO transactions(
 
                 sender_id,
                 receiver_id,
