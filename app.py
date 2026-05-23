@@ -254,7 +254,7 @@ def dashboard():
     cursor.execute(
         """
         SELECT balance
-        FROM Wallets
+        FROM wallets
         WHERE user_id=%s
         """,
 
@@ -445,7 +445,7 @@ def send_money():
         cursor.execute(
             """
             SELECT balance
-            FROM Wallets
+            FROM wallets
             WHERE user_id=%s
             """,
 
