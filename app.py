@@ -418,6 +418,8 @@ def send_money():
 
         receiver_upi = request.form['receiver_upi']
         amount = float(request.form['amount'])
+        if amount >=20000:
+            flash("Out of range money")
 
         # GET RECEIVER
 
