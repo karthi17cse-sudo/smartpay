@@ -631,10 +631,10 @@ def history():
 
         FROM transactions t
 
-        JOIN Users u1
+        JOIN users u1
         ON t.sender_id = u1.user_id
 
-        JOIN Users u2
+        JOIN users u2
         ON t.receiver_id = u2.user_id
 
         WHERE
